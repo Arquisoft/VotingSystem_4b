@@ -11,6 +11,8 @@ Voting System
 
 * Jose Labra
 
-k
+*Mónica Cueva González
+
+*Ana Bravo Mediavilla
 
 
