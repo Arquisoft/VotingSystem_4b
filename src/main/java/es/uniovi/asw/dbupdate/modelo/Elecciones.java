@@ -1,4 +1,4 @@
-package es.uniovi.asw.modelo;
+package es.uniovi.asw.dbupdate.modelo;
 
 import java.util.Set;
 

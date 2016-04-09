@@ -1,5 +1,6 @@
-package es.uniovi.asw.modelo;
+package es.uniovi.asw.dbupdate.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +13,13 @@ public class ColegioElectoral {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+	@Column(name="colegio")
 	private int codigoColegio;
+	@Column(name="tipo")
     private String tipo;
+	@Column(name="circuncripcion")
     private String circunscripcion;
+	@Column(name="comunidad")
     private String comunidadAutonoma;
     
     public Long getId() {

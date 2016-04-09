@@ -1,5 +1,6 @@
-package es.uniovi.asw.modelo;
+package es.uniovi.asw.dbupdate.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,15 +13,19 @@ public class Voto {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-	private ColegioElectoral colegio;
+	@Column(name="colegio")
+	private int codigoColegio;
+	@Column(name="partido")
     private String partido;
+	@Column(name="contabilizado")
     private boolean contabilizado;
     
-	public ColegioElectoral getColegio() {
-		return colegio;
+    
+	public int getColegio() {
+		return codigoColegio;
 	}
-	public void setColegio(ColegioElectoral colegio) {
-		this.colegio = colegio;
+	public void setColegio(int colegio) {
+		this.codigoColegio = colegio;
 	}
 	public String getPartido() {
 		return partido;
@@ -37,15 +42,18 @@ public class Voto {
 	public Long getId() {
 		return id;
 	}
-	public Voto(ColegioElectoral colegio, String partido, boolean contabilizado) {
+	
+	protected Voto(){}
+	
+	public Voto(int colegio, String partido, boolean contabilizado) {
 		super();
-		this.colegio = colegio;
+		this.codigoColegio = colegio;
 		this.partido = partido;
 		this.contabilizado = contabilizado;
 	}
 	@Override
 	public String toString() {
-		return "Voto [colegio=" + colegio + ", partido=" + partido + ", contabilizado=" + contabilizado + "]";
+		return "Voto [colegio=" + codigoColegio + ", partido=" + partido + ", contabilizado=" + contabilizado + "]";
 	}
     
     
