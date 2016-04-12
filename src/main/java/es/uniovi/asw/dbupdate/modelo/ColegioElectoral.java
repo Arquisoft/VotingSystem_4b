@@ -1,28 +1,41 @@
 package es.uniovi.asw.dbupdate.modelo;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+
 
 @Entity
-@Table(name = "ColegioElectoral")
+
 public class ColegioElectoral {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-	@Column(name="colegio")
 	private int codigoColegio;
-	@Column(name="tipo")
-    private String tipo;
-	@Column(name="circuncripcion")
     private String circunscripcion;
-	@Column(name="comunidad")
     private String comunidadAutonoma;
+    @ManyToOne 
+    private Elecciones elecciones;
+   
+    protected ColegioElectoral() {}
+	
+	
     
-    public Long getId() {
+    public ColegioElectoral( int codigoColegio, String circunscripcion,
+			String comunidadAutonoma, Elecciones elecciones) {
+		super();
+		this.codigoColegio = codigoColegio;
+		this.circunscripcion = circunscripcion;
+		this.comunidadAutonoma = comunidadAutonoma;
+		this.elecciones = elecciones;
+	}
+
+
+
+	public Long getId() {
 		return id;
 	}
 	public int getCodigoColegio() {
@@ -30,12 +43,6 @@ public class ColegioElectoral {
 	}
 	public void setCodigoColegio(int codigoColegio) {
 		this.codigoColegio = codigoColegio;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 	public String getCircunscripcion() {
 		return circunscripcion;
@@ -50,17 +57,11 @@ public class ColegioElectoral {
 		this.comunidadAutonoma = comunidadAutonoma;
 	}
 	
-	protected ColegioElectoral() {}
-	public ColegioElectoral(int codigoColegio, String tipo, String circunscripcion, String comunidadAutonoma) {
-		super();
-		this.codigoColegio = codigoColegio;
-		this.tipo = tipo;
-		this.circunscripcion = circunscripcion;
-		this.comunidadAutonoma = comunidadAutonoma;
-	}
+
+	
 	@Override
 	public String toString() {
-		return "ColegioElectoral [codigoColegio=" + codigoColegio + ", tipo=" + tipo + ", circunscripcion="
+		return "ColegioElectoral [codigoColegio=" + codigoColegio + ", circunscripcion="
 				+ circunscripcion + ", comunidadAutonoma=" + comunidadAutonoma + "]";
 	}
  
