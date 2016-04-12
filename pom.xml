@@ -8,7 +8,6 @@
 	<name>VotingSystem_4b</name>
 	<version>0.0.1</version>
 
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -17,11 +16,11 @@
 
 	<dependencies>
 
-		<dependency>
+	<!--	<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>5.3</version>
-		</dependency>
+		</dependency>  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
