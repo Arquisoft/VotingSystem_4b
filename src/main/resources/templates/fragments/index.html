@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:p="http://primefaces.org/ui"
+xmlns:h="http://java.sun.com/jsf/html"
+>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Voting System</title>
+</head>
+<body>
+
+	<div align="center">
+		<h:panelGroup id="panelogin">
+			<p:panelGrid id="Grid" columns="2" cellpadding="5">
+		Usuario: 
+		<h:panelGroup>
+					<p:inputText id="name" value="#{login.name}" required="true"
+						requiredMessage="#{msgs.login_form_name_required}" />
+					<p:message for="name" />
+				</h:panelGroup>
+  
+		Contraseña: 
+		<h:panelGroup>
+					<p:password id="password" value="#{login.password}" required="true"
+						requiredMessage="#{msgs.login_form_password_required}" />
+					<p:message for="password" />
+				</h:panelGroup>
+
+
+			</p:panelGrid>
+			<BR />
+			<h:outputText id="msgAlta" value="#{msgs[login.result]}" />
+		</h:panelGroup>
+		<BR /> <BR />
+		<p:commandButton id="botonLogin" value="Enviar"
+			action="#{login.verify}" update="panelogin" process="@form">
+		</p:commandButton>
+	</div>
+
+
+
+</body>
+</html>
