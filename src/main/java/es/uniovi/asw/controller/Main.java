@@ -15,8 +15,21 @@ public class Main {
 
   @RequestMapping("/")
   public ModelAndView landing(Model model) {
-    LOG.info("Landing page access");
-    return new ModelAndView("landing");
+    LOG.info("Index page access");
+    return new ModelAndView("index");
+  }
+  
+  
+  @RequestMapping("/votar")
+  public ModelAndView votar(Model model) {
+    LOG.info("Votar page access");
+    return new ModelAndView("votar");
+  }
+  
+  @RequestMapping("/modificar_elecciones")
+  public ModelAndView modificar(Model model) {
+    LOG.info("Modificar elecciones page access");
+    return new ModelAndView("modificar_elecciones");
   }
   
 }
