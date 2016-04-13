@@ -1,11 +1,15 @@
 package es.uniovi.asw.dbupdate.modelo;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -19,7 +23,10 @@ public class ColegioElectoral {
     private String comunidadAutonoma;
     @ManyToOne 
     private Elecciones elecciones;
-   
+    
+    @OneToMany(mappedBy = "colegio")
+    private Set<Voto> votos = new HashSet<Voto>();
+  
     protected ColegioElectoral() {}
 	
 	
@@ -34,10 +41,6 @@ public class ColegioElectoral {
 	}
 
 
-
-	public Long getId() {
-		return id;
-	}
 	public int getCodigoColegio() {
 		return codigoColegio;
 	}
@@ -57,13 +60,27 @@ public class ColegioElectoral {
 		this.comunidadAutonoma = comunidadAutonoma;
 	}
 	
+	public Elecciones getElecciones() {
+		return elecciones;
+	}
 
-	
+	public Set<Voto> getVotos() {
+		return votos;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "ColegioElectoral [codigoColegio=" + codigoColegio + ", circunscripcion="
-				+ circunscripcion + ", comunidadAutonoma=" + comunidadAutonoma + "]";
+		return "ColegioElectoral [codigoColegio=" + codigoColegio
+				+ ", circunscripcion=" + circunscripcion
+				+ ", comunidadAutonoma=" + comunidadAutonoma + ", elecciones="
+				+ elecciones + ", votos=" + votos + "]";
 	}
+
+
+
+
  
    
 }

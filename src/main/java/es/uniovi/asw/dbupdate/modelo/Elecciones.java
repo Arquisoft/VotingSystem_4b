@@ -1,7 +1,7 @@
 package es.uniovi.asw.dbupdate.modelo;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -21,23 +21,24 @@ public class Elecciones {
     private Date fechaInicio;
     private Date fechaFin;
     private String opciones;
-    private List<String> partidos;
+    
+  //  private Partido partidos;
     
     @OneToMany(mappedBy = "elecciones")
-    private Set<Voter> votantes;
+    private Set<Voter> votantes = new HashSet<Voter>();
     
     @OneToMany(mappedBy = "elecciones")
-    private Set<ColegioElectoral> colegiosElectorales; 
+    private Set<ColegioElectoral> colegiosElectorales=new HashSet<ColegioElectoral>(); 
 
 	public Elecciones(String nombre, Date fechaInicio, Date fechaFin,
-			String opciones, List<String> partidos, Set<Voter> votantes,
+			String opciones, Set<Voter> votantes,
 			Set<ColegioElectoral> colegiosElectorales) {
 		super();
 		this.nombre = nombre;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.opciones = opciones;
-		this.partidos = partidos;
+		//this.partidos = partidos;
 		this.votantes = votantes;
 		this.colegiosElectorales = colegiosElectorales;
 	}
@@ -77,35 +78,22 @@ public class Elecciones {
 		this.opciones = opciones;
 	}
 
-	public List<String> getPartidos() {
-		return partidos;
-	}
-
-	public void setPartidos(List<String> partidos) {
-		this.partidos = partidos;
-	}
 
 	public Set<Voter> getVotantes() {
 		return votantes;
 	}
 
-	public void setVotantes(Set<Voter> votantes) {
-		this.votantes = votantes;
-	}
 
 	public Set<ColegioElectoral> getColegiosElectorales() {
 		return colegiosElectorales;
 	}
 
-	public void setColegiosElectorales(Set<ColegioElectoral> colegiosElectorales) {
-		this.colegiosElectorales = colegiosElectorales;
-	}
 
 	@Override
 	public String toString() {
 		return "Elecciones [nombre=" + nombre + ", fechaInicio=" + fechaInicio
 				+ ", fechaFin=" + fechaFin + ", opciones=" + opciones
-				+ ", partidos=" + partidos + ", votantes=" + votantes
+				+  ", votantes=" + votantes
 				+ ", colegiosElectorales=" + colegiosElectorales + "]";
 	}
 	

@@ -45,7 +45,7 @@ public class Voter {
 	 * 
 	 */
 	public Voter(String nombre, String email, String nif, int codigoColegio, String usuario,
-			String clave, boolean ejercioDerechoAlVoto) {
+			String clave, boolean ejercioDerechoAlVoto, Elecciones elecciones) {
 		super();
 		this.nombre = nombre;
 		this.email = email;
@@ -54,6 +54,7 @@ public class Voter {
 		this.usuario = usuario;
 		this.clave = clave;
 		this.ejercioDerechoAlVoto = ejercioDerechoAlVoto;
+		this.elecciones=elecciones;
 	}
 	
 	
@@ -198,15 +199,23 @@ public class Voter {
 	}
 
 
+	public Elecciones getElecciones() {
+		return elecciones;
+	}
+
+
+
+
+
 	/**
 	 * Método toString que muestra la información del votante.
 	 */
 	@Override
 	public String toString() {
-		return "Votante [nombre=" + nombre + ", email=" + email
-				+ ", nif=" + nif + ", codigoColegio=" + codigoColegio
-				+ ", usuario=" + usuario + ", clave=" + clave
-				+ ", ejercioDerechoAlVoto=" + ejercioDerechoAlVoto + "]";
+		return "Voter [nombre=" + nombre + ", email=" + email + ", nif=" + nif
+				+ ", codigoColegio=" + codigoColegio + ", usuario=" + usuario
+				+ ", clave=" + clave + ", ejercioDerechoAlVoto="
+				+ ejercioDerechoAlVoto + ", elecciones=" + elecciones + "]";
 	}
 
 	
