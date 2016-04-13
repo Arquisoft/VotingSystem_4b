@@ -9,10 +9,7 @@ Voting System
 
 # Authors
 
-* Jose Labra
-
 * Mónica Cueva González
-
-* Ana Bravo Mediavilla
+* Jose Labra
 
 
