@@ -13,8 +13,10 @@ public class Voto {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String partido;
     private boolean contabilizado;
+    
+    @ManyToOne
+    private Partido partidoPolitico;
     
     @ManyToOne
     private ColegioElectoral colegio;
@@ -23,11 +25,11 @@ public class Voto {
     
     
     
-	public Voto(ColegioElectoral colegio, String partido,
+	public Voto(ColegioElectoral colegio, Partido partido,
 			boolean contabilizado) {
 		super();
 		this.colegio = colegio;
-		this.partido = partido;
+		this.partidoPolitico = partido;
 		this.contabilizado = contabilizado;
 	}
 
@@ -36,13 +38,10 @@ public class Voto {
 	} 
 
 
-	public String getPartido() {
-		return partido;
+	public Partido getPartido() {
+		return partidoPolitico;
 	}
 
-	public void setPartido(String partido) {
-		this.partido = partido;
-	}
 
 	public boolean isContabilizado() {
 		return contabilizado;
@@ -56,7 +55,7 @@ public class Voto {
 
 	@Override
 	public String toString() {
-		return "Voto [partido=" + partido + ", contabilizado=" + contabilizado
+		return "Voto [partido=" + partidoPolitico + ", contabilizado=" + contabilizado
 				+ ", colegio=" + colegio + "]";
 	}
 

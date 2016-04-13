@@ -22,7 +22,8 @@ public class Elecciones {
     private Date fechaFin;
     private String opciones;
     
-  //  private Partido partidos;
+    @OneToMany(mappedBy ="elecciones")
+    private Set<Partido> partidosPoliticos;
     
     @OneToMany(mappedBy = "elecciones")
     private Set<Voter> votantes = new HashSet<Voter>();
