@@ -1,7 +1,70 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: head"></head>
+<head th:replace="fragments/header :: head">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" href="css/datepicker.css"/>
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        
+        <link type="text/css" href="css/bootstrap.min.css" />
+        <link type="text/css" href="css/bootstrap-timepicker.min.css" />
+        
+
+</head>
 <body>
-<div th:replace="fragments/header :: cabecera"><p>Hello!</p></div>
+<div th:replace="fragments/header :: cabecera"></div>
 </body>
+
+	<div align="center">
+		<input class="nombre_elecciones" placeholder="Nombre de las elecciones" type="text" /> 
+		<br></br>
+		
+		Fecha inicial de las elecciones: 
+		<input class="fecha_inicial" type="date" /> 
+		<input id="hora_inicial" type="time" class="form-control input-small"/>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+		<br></br>
+		
+		<input class="nombre_elecciones" placeholder="Nombre de las elecciones" type="text" /> 
+		<br></br>
+		
+		Fecha final de las elecciones: 
+		<input class="fecha_final" type="date" /> 
+		<input id="hora_final" type="time" class="form-control input-small"/>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+		
+		
+		
+		<div class="container">
+            <div class="hero-unit">
+                <input  type="text" placeholder="click to show datepicker"  id="example1"/>
+            </div>
+        </div>
+        
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+                $('#example1').datepicker({
+                    format: "dd/mm/yyyy"
+                });  
+            
+            });
+        </script>
+        
+        
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+        
+        <script type="text/javascript">
+            $('#timepicker1').timepicker();
+        </script>
+        
+  
+	
+	</div>
+
 </html>
