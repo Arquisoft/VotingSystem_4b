@@ -94,7 +94,7 @@ a:-webkit-any-link {
 	cursor: auto;
 }
 
-a.boton_votar:hover, a.boton_modificar:hover, a.boton_add_colegio:hover,
+button.boton_votar:hover, a.boton_modificar:hover, a.boton_add_colegio:hover,
 	a.boton_add_partido:hover, a.boton_partido:hover, a.boton_colegio:hover
 	{
 	background: #310B54;

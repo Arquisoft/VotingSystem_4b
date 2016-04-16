@@ -2,15 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: head"></head>
 <body>
-	<div th:replace="fragments/header :: cabecera">
-	</div>
+	<div th:replace="fragments/header :: cabecera"></div>
 
 	<div align="center">
+	<form id="votar-form"  th:action="@{/votar}"
+			method="post" th:object="${partido}">
+		<input class="input_siglas_partido" placeholder="Partido" type="text" th:field="*{siglas_partido}" />
 
-		<input class="input_siglas_partido" placeholder="Partido" type="text" /> 
-	
-		<a href="" class="boton_votar">VOTAR</a>
-		
+		<button type="submit" class="boton_votar">VOTAR</button>
+	</form>
 	</div>
 
 </body>
