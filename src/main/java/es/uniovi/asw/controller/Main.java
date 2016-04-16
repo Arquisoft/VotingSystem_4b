@@ -32,4 +32,18 @@ public class Main {
     return new ModelAndView("modificar_elecciones");
   }
   
+  
+  @RequestMapping("/add_colegio")
+  public ModelAndView addColegio(Model model) {
+    LOG.info("Add school page access");
+    return new ModelAndView("add_colegio");
+  }
+  
+  
+  @RequestMapping("/add_partido")
+  public ModelAndView addPartido(Model model) {
+    LOG.info("Add politic party page access");
+    return new ModelAndView("add_partido");
+  }
+  
 }

@@ -19,27 +19,33 @@
 		<input class="nombre_elecciones" placeholder="Nombre de las elecciones" type="text" /> 
 		<br></br>
 		
-		Fecha inicial de las elecciones: 
-		<input class="fecha_inicial" type="date" /> 
-		<input id="hora_inicial" type="time" class="form-control input-small"/>
+		<label class="etiqueta_fecha_inicial" for="fecha_inicial">Fecha inicial de las elecciones: </label>
+		<input id="fecha_inicial" class="fecha_inicial" type="date" /> 
+		<input class="hora_inicial" type="time" />
             <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 		<br></br>
 		
-		<input class="nombre_elecciones" placeholder="Nombre de las elecciones" type="text" /> 
+		<label class="etiqueta_fecha_final" for="fecha_final">Fecha final de las elecciones: </label>
+		<input id="fecha_final" class="fecha_final" type="date" /> 
+		<input class="hora_final" type="time"/>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 		<br></br>
 		
-		Fecha final de las elecciones: 
-		<input class="fecha_final" type="date" /> 
-		<input id="hora_final" type="time" class="form-control input-small"/>
-            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+		<input class="opciones_voto" placeholder="Opciones de voto" type="text" /> 
+		
+		<br></br>
+		<br></br>
+		<br></br>
+		<a href="add_partido.html" class="boton_add_partido">AÑADIR PARTIDO</a><a href="add_colegio.html" class="boton_add_colegio">AÑADIR COLEGIO ELECTORAL</a>
+			
+		<br></br>
+		<br></br>
+		<br></br>
+		<a href="" class="boton_modificar">MODIFICAR</a>
 		
 		
 		
-		<div class="container">
-            <div class="hero-unit">
-                <input  type="text" placeholder="click to show datepicker"  id="example1"/>
-            </div>
-        </div>
+		
         
         <script src="js/jquery-1.9.1.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>

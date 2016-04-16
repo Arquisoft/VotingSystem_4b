@@ -33,13 +33,13 @@ public class Elecciones {
 
 	public Elecciones(String nombre, Date fechaInicio, Date fechaFin,
 			String opciones, Set<Voter> votantes,
-			Set<ColegioElectoral> colegiosElectorales) {
+			Set<ColegioElectoral> colegiosElectorales, Set<Partido> partidos) {
 		super();
 		this.nombre = nombre;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.opciones = opciones;
-		//this.partidos = partidos;
+		this.partidosPoliticos = partidos;
 		this.votantes = votantes;
 		this.colegiosElectorales = colegiosElectorales;
 	}
@@ -88,15 +88,21 @@ public class Elecciones {
 	public Set<ColegioElectoral> getColegiosElectorales() {
 		return colegiosElectorales;
 	}
-
+	
+	
+	public Set<Partido> getPartidosPoliticos() {
+		return partidosPoliticos;
+	}
 
 	@Override
 	public String toString() {
 		return "Elecciones [nombre=" + nombre + ", fechaInicio=" + fechaInicio
 				+ ", fechaFin=" + fechaFin + ", opciones=" + opciones
-				+  ", votantes=" + votantes
-				+ ", colegiosElectorales=" + colegiosElectorales + "]";
+				+ ", partidosPoliticos=" + partidosPoliticos + ", votantes="
+				+ votantes + ", colegiosElectorales=" + colegiosElectorales
+				+ "]";
 	}
+
 	
 	
 	
