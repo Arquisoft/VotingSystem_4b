@@ -1,28 +1,30 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: head">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<div th:replace="fragments/header :: cabecera">
-	</div>
+	<div th:replace="fragments/header :: cabecera"></div>
 
 	<div align="center">
 
-		<input class="cod_colegio" placeholder="Código del colegio" type="text" /> 
-		<br></br>
+		<form id="colegio-form" action="#" th:action="@{/add_colegio}"
+			method="post" th:object="${colegioElectoral}" >
+
+			<label class="etiqueta_cod_colegio" for="cod_colegio">Código del colegio: </label>
+			<input class="cod_colegio" type="text" th:field="*{codigoColegio}"/> 
+			<br></br> 
+			<input class="circunscripcion_colegio"
+				placeholder="Circunscripción" type="text"
+				th:field="*{circunscripcion}" /> 
+			<br></br> 
 			
-		<input class="circunscripcion_colegio" placeholder="Circunscripción" type="text" /> 
-		<br></br>
-		
-		<input class="ca_colegio" placeholder="Comunidad Autónoma" type="text" /> 
-		<br></br>
-		
-		<br></br>
-		<br></br>
-		<br></br>
-		<a href="" class="boton_colegio">AÑADIR</a>
-		
+			<input class="ca_colegio" placeholder="Comunidad Autónoma" type="text"
+			th:field="*{comunidadAutonoma}" />
+			<br></br> <br></br> <br></br> <br></br>
+			
+			<button type="submit" class="boton_colegio">AÑADIR</button>
+		</form>
 	</div>
 
 </body>

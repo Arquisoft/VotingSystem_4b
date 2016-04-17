@@ -1,15 +1,12 @@
 package es.uniovi.asw.modelo;
 
 
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 
 
 @Entity
@@ -21,11 +18,6 @@ public class ColegioElectoral {
 	private int codigoColegio;
     private String circunscripcion;
     private String comunidadAutonoma;
-    @ManyToOne 
-    private Elecciones elecciones;
-    
-    @OneToMany(mappedBy = "colegio")
-    private Set<Voto> votos = new HashSet<Voto>();
   
     protected ColegioElectoral() {}
 	
@@ -59,18 +51,7 @@ public class ColegioElectoral {
 		this.comunidadAutonoma = comunidadAutonoma;
 	}
 	
-	public Elecciones getElecciones() {
-		return elecciones;
-	}
 
-	public Set<Voto> getVotos() {
-		return votos;
-	}
-
-
-	public void setElecciones(Elecciones elecciones) {
-		this.elecciones = elecciones;
-	}
 
 
 
@@ -79,7 +60,7 @@ public class ColegioElectoral {
 		return "ColegioElectoral [codigoColegio=" + codigoColegio
 				+ ", circunscripcion=" + circunscripcion
 				+ ", comunidadAutonoma=" + comunidadAutonoma + ", elecciones="
-				+ elecciones + ", votos=" + votos + "]";
+				+ "]";
 	}
 
 

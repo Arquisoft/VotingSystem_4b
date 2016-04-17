@@ -71,7 +71,7 @@ a.tooltip:hover span {
 	font-family: futura;
 }
 
-.boton_add_partido, .boton_add_colegio, .boton_partido, .boton_colegio {
+ .boton_add_colegio, .boton_colegio {
 	text-decoration: none;
 	padding: 0.50em 1.10em 0.50em 1.50em;
 	border-color: white;
@@ -85,17 +85,13 @@ a.tooltip:hover span {
 	font-family: futura;
 }
 
-.boton_add_partido {
-	margin-right: 2em;
-	margin-left: 3em;
-}
 
 a:-webkit-any-link {
 	cursor: auto;
 }
 
-button.boton_votar:hover, a.boton_modificar:hover, a.boton_add_colegio:hover,
-	a.boton_add_partido:hover, a.boton_partido:hover, a.boton_colegio:hover
+button.boton_votar:hover, button.boton_modificar:hover, a.boton_add_colegio:hover,
+ button.boton_colegio:hover
 	{
 	background: #310B54;
 }
@@ -118,7 +114,7 @@ button.boton_votar:hover, a.boton_modificar:hover, a.boton_add_colegio:hover,
 
 .nombre_elecciones, .opciones_voto,
 .fecha_inicial, .fecha_final, .hora_inicial, .hora_final,
-.nombre_partido, .sigla_partido, .candidato_partido, .cod_colegio,
+.nombre_partido,
 .circunscripcion_colegio, .ca_colegio{
 	color: #734A99;
 	outline: none;
@@ -131,8 +127,20 @@ button.boton_votar:hover, a.boton_modificar:hover, a.boton_add_colegio:hover,
 	margin-right: 10px;
 	}
 
+.cod_colegio{
+	color: #734A99;
+	outline: none;
+	border: none;
+	padding: 10px;
+	font-size: 18px;
+	box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.7);
+	transition: transform 0.5s cubic-bezier(0.67, -0.33, 0.62, 1.35),
+	box-shadow 0.4s ease;
+	margin-right: 10px;
+}
+
 .nombre_elecciones, .opciones_voto, .fecha_inicial, .fecha_final,
-	.hora_inicial, .hora_final, .nombre_partido, .sigla_partido, .candidato_partido, .cod_colegio,
+	.hora_inicial, .hora_final, .nombre_partido, .cod_colegio,
 .circunscripcion_colegio, .ca_colegio {
 	margin-top: 10px;
 	text-align:center;
@@ -144,19 +152,19 @@ button.boton_votar:hover, a.boton_modificar:hover, a.boton_add_colegio:hover,
 
 input.input_siglas_partido:focus, input.nombre_elecciones:focus, input.opciones_voto:focus,
 input.fecha_inicial:focus, input.fecha_final:focus, input.hora_inicial:focus,
-input.hora_final:focus, input.nombre_partido:focus, input.sigla_partido:focus, input.candidato_partido:focus,
+input.hora_final:focus, input.nombre_partido:focus,
 input.cod_colegio:focus, input.circunscripcion_colegio:focus, input.ca_colegio:focus {
 	box-shadow: 10px 2px 50px #000;
 	transform: scale(1.5, 1.5);
 }
 
-.etiqueta_fecha_inicial, .etiqueta_fecha_final, .lista_partidos {
+.etiqueta_fecha_inicial, .etiqueta_fecha_final, .lista_partidos, .etiqueta_cod_colegio {
 	font-size: 25px;
 	font-weight: 100;
 	color: #eee;
 }
 
-.lista_partidos {
+.lista_partidos, .etiqueta_cod_colegio {
 	font-size: 18px;
 }
 

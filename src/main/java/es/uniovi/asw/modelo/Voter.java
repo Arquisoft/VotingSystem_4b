@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
 
 /**
  * Clase Voter que identifica al votante
@@ -25,8 +25,6 @@ public class Voter {
 	private String clave; //Clave del votante para acceder al sistema
 	private boolean ejercioDerechoAlVoto; //Atributo booleano que indica si el usuario ha votado o no
 	
-	@ManyToOne 
-	private Elecciones elecciones;
 	
 	 protected Voter() {}
 
@@ -199,17 +197,6 @@ public class Voter {
 	}
 
 
-	public Elecciones getElecciones() {
-		return elecciones;
-	}
-
-
-
-
-
-	public void setElecciones(Elecciones elecciones) {
-		this.elecciones = elecciones;
-	}
 
 	/**
 	 * Método toString que muestra la información del votante.
@@ -219,7 +206,7 @@ public class Voter {
 		return "Voter [nombre=" + nombre + ", email=" + email + ", nif=" + nif
 				+ ", codigoColegio=" + codigoColegio + ", usuario=" + usuario
 				+ ", clave=" + clave + ", ejercioDerechoAlVoto="
-				+ ejercioDerechoAlVoto + ", elecciones=" + elecciones + "]";
+				+ ejercioDerechoAlVoto + "]";
 	}
 
 	

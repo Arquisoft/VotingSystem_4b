@@ -11,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import es.uniovi.asw.dbupdate.ColegioRepository;
 import es.uniovi.asw.dbupdate.VoterRepository;
 import es.uniovi.asw.dbupdate.VotoRepository;
+import es.uniovi.asw.modelo.ColegioElectoral;
 import es.uniovi.asw.modelo.PartidoPolitico;
 import es.uniovi.asw.modelo.Voto;
 
@@ -25,6 +28,9 @@ public class Main {
 	VotoRepository votoRepository = null;
 	@Autowired
 	VoterRepository voterRepository = null;
+	
+	@Autowired
+	ColegioRepository colegioRepository=null;
 
 	@RequestMapping("/")
 	public ModelAndView landing(Model model) {
@@ -75,16 +81,27 @@ public class Main {
 		return new ModelAndView("modificar_elecciones");
 	}
 
-	@RequestMapping("/add_colegio")
-	public ModelAndView addColegio(Model model) {
-		LOG.info("Add school page access");
-		return new ModelAndView("add_colegio");
+	
+	
+	@RequestMapping(value = "/add_colegio")
+	public String partido(ColegioElectoral colegioElectoral, Model model) {
+		return "/add_colegio";
+	}
+	
+	@RequestMapping(value = "/add_colegio", method = RequestMethod.POST)
+	public String addPartido(ColegioElectoral colegioElectoral, Model model) {
+		
+		List<ColegioElectoral> colegios = colegioRepository.findAll();
+		for (ColegioElectoral colegioElectoral2 : colegios) {
+			if(colegioElectoral.getCodigoColegio()!= colegioElectoral2.getCodigoColegio()){
+				ColegioElectoral c = new ColegioElectoral(colegioElectoral.getCodigoColegio(),
+						colegioElectoral.getCircunscripcion(), colegioElectoral.getComunidadAutonoma());
+				colegioRepository.save(c);
+			}
+		}
+
+		return "modificar_elecciones";
 	}
 
-	@RequestMapping("/add_partido")
-	public ModelAndView addPartido(Model model) {
-		LOG.info("Add politic party page access");
-		return new ModelAndView("add_partido");
-	}
 
 }
