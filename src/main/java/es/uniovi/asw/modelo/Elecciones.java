@@ -1,4 +1,4 @@
-package es.uniovi.asw.dbupdate.modelo;
+package es.uniovi.asw.modelo;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,9 +22,6 @@ public class Elecciones {
     private Date fechaFin;
     private String opciones;
     
-    @OneToMany(mappedBy ="elecciones")
-    private Set<Partido> partidosPoliticos = new HashSet<Partido>();
-    
     @OneToMany(mappedBy = "elecciones")
     private Set<Voter> votantes = new HashSet<Voter>();
     
@@ -33,13 +30,12 @@ public class Elecciones {
 
 	public Elecciones(String nombre, Date fechaInicio, Date fechaFin,
 			String opciones, Set<Voter> votantes,
-			Set<ColegioElectoral> colegiosElectorales, Set<Partido> partidos) {
+			Set<ColegioElectoral> colegiosElectorales) {
 		super();
 		this.nombre = nombre;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.opciones = opciones;
-		this.partidosPoliticos = partidos;
 		this.votantes = votantes;
 		this.colegiosElectorales = colegiosElectorales;
 	}
@@ -90,15 +86,13 @@ public class Elecciones {
 	}
 	
 	
-	public Set<Partido> getPartidosPoliticos() {
-		return partidosPoliticos;
-	}
+
 
 	@Override
 	public String toString() {
 		return "Elecciones [nombre=" + nombre + ", fechaInicio=" + fechaInicio
 				+ ", fechaFin=" + fechaFin + ", opciones=" + opciones
-				+ ", partidosPoliticos=" + partidosPoliticos + ", votantes="
+				+ ", votantes="
 				+ votantes + ", colegiosElectorales=" + colegiosElectorales
 				+ "]";
 	}

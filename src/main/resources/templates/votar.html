@@ -1,16 +1,38 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: head"></head>
+<head th:replace="fragments/header :: head">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
 <body>
 	<div th:replace="fragments/header :: cabecera"></div>
 
 	<div align="center">
-	<form id="votar-form" action="#" th:action="@{/votar}"
-			method="post" th:object="${partido}">
-		<input class="input_siglas_partido" placeholder="Sigla del partido" type="text" th:field="*{sigla}" />
+		<form id="votar-form" action="#" th:action="@{/votar}" method="post"
+			th:object="${voto}">
 
-		<button type="submit" class="boton_votar">VOTAR</button>
-	</form>
+
+			<br></br>
+			<br></br>
+			<br></br>
+
+			<label class="lista_partidos" for="lista_partidos">Lista de
+				partidos políticos: </label>
+
+
+			<div class="tabla_partidos">
+				<table>
+					<tr th:each="partido : ${partidos}">
+						<td th:text="${partido.name()}"></td>
+					</tr>
+				</table>
+			</div>
+
+
+			<input class="input_siglas_partido" placeholder="Partido" type="text"
+				th:field="*{partidoPolitico}" />
+
+			<button type="submit" class="boton_votar">VOTAR</button>
+		</form>
 	</div>
 
 </body>

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import es.uniovi.asw.dbupdate.modelo.Voter;
+import es.uniovi.asw.modelo.Voter;
 
 public interface VoterRepository extends CrudRepository<Voter, Long> {
 

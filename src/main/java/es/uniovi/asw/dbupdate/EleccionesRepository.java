@@ -6,7 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 
 
-import es.uniovi.asw.dbupdate.modelo.Elecciones;
+
+import es.uniovi.asw.modelo.Elecciones;
 
 public interface EleccionesRepository extends CrudRepository<Elecciones, Long>  {
 

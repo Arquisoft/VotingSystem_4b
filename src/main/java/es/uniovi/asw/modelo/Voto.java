@@ -1,4 +1,4 @@
-package es.uniovi.asw.dbupdate.modelo;
+package es.uniovi.asw.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +17,7 @@ public class Voto {
     
     private boolean nulo;
     private boolean blanco;
-    
-    @ManyToOne
-    private Partido partidoPolitico;
+    private PartidoPolitico partidoPolitico;
     
     @ManyToOne
     private ColegioElectoral colegio;
@@ -28,7 +26,7 @@ public class Voto {
     
     
     
-	public Voto(ColegioElectoral colegio, Partido partido,
+	public Voto(ColegioElectoral colegio, PartidoPolitico partido,
 			boolean contabilizado, boolean nulo, boolean blanco) {
 		super();
 		this.colegio = colegio;
@@ -70,17 +68,28 @@ public class Voto {
 	} 
 
 
-	public Partido getPartido() {
-		return partidoPolitico;
-	}
-
-
 	public boolean isContabilizado() {
 		return contabilizado;
 	}
 
 	public void setContabilizado(boolean contabilizado) {
 		this.contabilizado = contabilizado;
+	}
+
+	public PartidoPolitico getPartidoPolitico() {
+		return partidoPolitico;
+	}
+
+
+
+	public void setPartidoPolitico(PartidoPolitico partidoPolitico) {
+		this.partidoPolitico = partidoPolitico;
+	}
+
+
+
+	public void setColegio(ColegioElectoral colegio) {
+		this.colegio = colegio;
 	}
 
 

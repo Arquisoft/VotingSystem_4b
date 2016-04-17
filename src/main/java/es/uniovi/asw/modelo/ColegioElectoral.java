@@ -1,4 +1,4 @@
-package es.uniovi.asw.dbupdate.modelo;
+package es.uniovi.asw.modelo;
 
 
 import java.util.HashSet;
@@ -65,6 +65,11 @@ public class ColegioElectoral {
 
 	public Set<Voto> getVotos() {
 		return votos;
+	}
+
+
+	public void setElecciones(Elecciones elecciones) {
+		this.elecciones = elecciones;
 	}
 
 

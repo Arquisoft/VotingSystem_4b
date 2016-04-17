@@ -101,7 +101,7 @@ button.boton_votar:hover, a.boton_modificar:hover, a.boton_add_colegio:hover,
 }
 
 .input_siglas_partido {
-	margin-top: 11%;
+	margin-top: 5%;
 }
 
 .input_siglas_partido {
@@ -138,7 +138,7 @@ button.boton_votar:hover, a.boton_modificar:hover, a.boton_add_colegio:hover,
 	text-align:center;
 }
 
-.nombre_elecciones, .nombre_partido, .cod_colegio {
+.nombre_elecciones, .nombre_partido, .cod_colegio, .lista_partidos{
 	margin-top: 3%;
 }
 
@@ -150,8 +150,27 @@ input.cod_colegio:focus, input.circunscripcion_colegio:focus, input.ca_colegio:f
 	transform: scale(1.5, 1.5);
 }
 
-.etiqueta_fecha_inicial, .etiqueta_fecha_final {
+.etiqueta_fecha_inicial, .etiqueta_fecha_final, .lista_partidos {
 	font-size: 25px;
 	font-weight: 100;
 	color: #eee;
+}
+
+.lista_partidos {
+	font-size: 18px;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+    border-color:#eee;
+    color:#eee;
+    text-align:center;
+
+}
+
+table {
+	margin-top:1%;
+    border-collapse: collapse;
+     width: 8%;
 }

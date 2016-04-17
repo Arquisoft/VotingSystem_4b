@@ -1,4 +1,4 @@
-package es.uniovi.asw.dbupdate.modelo;
+package es.uniovi.asw.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -206,6 +206,10 @@ public class Voter {
 
 
 
+
+	public void setElecciones(Elecciones elecciones) {
+		this.elecciones = elecciones;
+	}
 
 	/**
 	 * Método toString que muestra la información del votante.
