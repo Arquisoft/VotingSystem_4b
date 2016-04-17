@@ -45,7 +45,7 @@ public class Voter {
 	 * 
 	 */
 	public Voter(String nombre, String email, String nif, int codigoColegio, String usuario,
-			String clave, boolean ejercioDerechoAlVoto, Elecciones elecciones) {
+			String clave, boolean ejercioDerechoAlVoto) {
 		super();
 		this.nombre = nombre;
 		this.email = email;
@@ -54,7 +54,7 @@ public class Voter {
 		this.usuario = usuario;
 		this.clave = clave;
 		this.ejercioDerechoAlVoto = ejercioDerechoAlVoto;
-		this.elecciones=elecciones;
+
 	}
 	
 	

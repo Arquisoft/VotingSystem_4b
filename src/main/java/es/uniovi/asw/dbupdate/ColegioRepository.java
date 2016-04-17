@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import es.uniovi.asw.dbupdate.modelo.ColegioElectoral;
 
 public interface ColegioRepository extends CrudRepository<ColegioElectoral, Long> {
+	
 	ColegioElectoral findByCodigoColegio(int codigoColegio);
 	List<ColegioElectoral> findAll();
 }

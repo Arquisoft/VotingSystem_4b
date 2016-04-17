@@ -15,6 +15,9 @@ public class Voto {
     private Long id;
     private boolean contabilizado;
     
+    private boolean nulo;
+    private boolean blanco;
+    
     @ManyToOne
     private Partido partidoPolitico;
     
@@ -26,12 +29,41 @@ public class Voto {
     
     
 	public Voto(ColegioElectoral colegio, Partido partido,
-			boolean contabilizado) {
+			boolean contabilizado, boolean nulo, boolean blanco) {
 		super();
 		this.colegio = colegio;
 		this.partidoPolitico = partido;
 		this.contabilizado = contabilizado;
+		this.nulo=nulo;
+		this.blanco=blanco;
 	}
+
+	
+	
+	
+	public boolean isNulo() {
+		return nulo;
+	}
+
+
+
+	public void setNulo(boolean nulo) {
+		this.nulo = nulo;
+	}
+
+
+
+	public boolean isBlanco() {
+		return blanco;
+	}
+
+
+
+	public void setBlanco(boolean blanco) {
+		this.blanco = blanco;
+	}
+
+
 
 	public ColegioElectoral getColegio() {
 		return colegio;
@@ -55,10 +87,14 @@ public class Voto {
 
 	@Override
 	public String toString() {
-		return "Voto [partido=" + partidoPolitico + ", contabilizado=" + contabilizado
+		return "Voto [contabilizado=" + contabilizado + ", nulo=" + nulo
+				+ ", blanco=" + blanco + ", partidoPolitico=" + partidoPolitico
 				+ ", colegio=" + colegio + "]";
 	}
 
+
+
+	
 
 
 

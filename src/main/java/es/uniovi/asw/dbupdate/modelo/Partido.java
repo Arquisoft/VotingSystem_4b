@@ -1,5 +1,6 @@
 package es.uniovi.asw.dbupdate.modelo;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -25,20 +26,17 @@ public class Partido {
 	private Elecciones elecciones;
 	
 	@OneToMany(mappedBy ="partidoPolitico")
-	private Set<Voto> votos;
+	private Set<Voto> votos = new HashSet<Voto>();
 	
 
 	 protected Partido(){
 	 }
 
-	public Partido(String nombre, String candidato, String sigla,
-			Elecciones elecciones, Set<Voto> votos) {
+	public Partido(String nombre, String candidato, String sigla) {
 		super();
 		this.nombre = nombre;
 		this.candidato = candidato;
 		this.sigla = sigla;
-		this.elecciones = elecciones;
-		this.votos = votos;
 	}
 
 	public String getNombre() {
@@ -67,6 +65,11 @@ public class Partido {
 
 	public Set<Voto> getVotos() {
 		return votos;
+	}
+	
+
+	public void setVotos(Set<Voto> votos) {
+		this.votos = votos;
 	}
 
 	@Override

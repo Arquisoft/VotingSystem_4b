@@ -23,7 +23,7 @@ public class Elecciones {
     private String opciones;
     
     @OneToMany(mappedBy ="elecciones")
-    private Set<Partido> partidosPoliticos;
+    private Set<Partido> partidosPoliticos = new HashSet<Partido>();
     
     @OneToMany(mappedBy = "elecciones")
     private Set<Voter> votantes = new HashSet<Voter>();

@@ -5,9 +5,9 @@
 	<div th:replace="fragments/header :: cabecera"></div>
 
 	<div align="center">
-	<form id="votar-form"  th:action="@{/votar}"
+	<form id="votar-form" action="#" th:action="@{/votar}"
 			method="post" th:object="${partido}">
-		<input class="input_siglas_partido" placeholder="Partido" type="text" th:field="*{siglas_partido}" />
+		<input class="input_siglas_partido" placeholder="Sigla del partido" type="text" th:field="*{sigla}" />
 
 		<button type="submit" class="boton_votar">VOTAR</button>
 	</form>

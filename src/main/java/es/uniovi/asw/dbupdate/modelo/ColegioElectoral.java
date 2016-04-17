@@ -32,12 +32,11 @@ public class ColegioElectoral {
 	
     
     public ColegioElectoral( int codigoColegio, String circunscripcion,
-			String comunidadAutonoma, Elecciones elecciones) {
+			String comunidadAutonoma) {
 		super();
 		this.codigoColegio = codigoColegio;
 		this.circunscripcion = circunscripcion;
 		this.comunidadAutonoma = comunidadAutonoma;
-		this.elecciones = elecciones;
 	}
 
 
