@@ -1,8 +1,8 @@
 package es.uniovi.asw.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import es.uniovi.asw.dbupdate.ColegioRepository;
+import es.uniovi.asw.dbupdate.EleccionesRepository;
 import es.uniovi.asw.dbupdate.VoterRepository;
 import es.uniovi.asw.dbupdate.VotoRepository;
 import es.uniovi.asw.modelo.ColegioElectoral;
@@ -32,6 +32,9 @@ public class Main {
 
 	@Autowired
 	ColegioRepository colegioRepository = null;
+
+	@Autowired
+	EleccionesRepository eleccionesRepository = null;
 
 	@RequestMapping("/")
 	public ModelAndView landing(Model model) {
@@ -104,19 +107,60 @@ public class Main {
 
 	}
 
-	@RequestMapping(value= "/modificar_elecciones")
-	public String modificar(Model model) {
+	@RequestMapping(value = "/modificar_elecciones")
+	public String modificar(Elecciones elecciones, String fechaInicio,
+			String fechaFin, Model model) {
 		LOG.info("Modificar elecciones page access");
 		return "/modificar_elecciones";
 	}
-	
 
 	@RequestMapping(value = "/modificar_elecciones", method = RequestMethod.POST)
-	public String addElecciones(Elecciones eleccion, Model model) {	
+	public String addElecciones(Elecciones elecciones, String fechaInicio,
+			String fechaFin, Model model) {
 		LOG.info("Modificar elecciones page access");
-		return "/modificar_elecciones";
+
+		if (elecciones.getNombre() == null || elecciones.getOpciones() == null
+				|| fechaInicio == null || fechaFin == null 
+				|| elecciones.getFechaFin().before(elecciones.getFechaInicio())) {
+			model.addAttribute("mensaje", "Por favor, rellene todos los campos");
+			LOG.info("No se han podido convocar nuevas elecciones");
+			return "/modificar_elecciones";
+
+		} else {
+			
+			List<Elecciones> listaElecciones = eleccionesRepository.findAll();
+			if (listaElecciones != null && !listaElecciones.isEmpty()) {
+				for (Elecciones e : listaElecciones) {
+					if (!e.getNombre().equals(elecciones.getNombre())) {
+						Elecciones eleccion = new Elecciones(
+								elecciones.getNombre(),
+								elecciones.getFechaInicio(),
+								elecciones.getFechaFin(),
+								elecciones.getOpciones());
+						eleccionesRepository.save(eleccion);
+						model.addAttribute("mensaje",
+								"Se han convocado las nuevas elecciones con nombre: "
+										+ elecciones.getNombre());
+						LOG.info("Se han convocado las nuevas elecciones con nombre: "
+								+ elecciones.getNombre());
+						return "/modificar_elecciones";
+					}
+				}
+			} else {
+				Elecciones eleccion = new Elecciones(elecciones.getNombre(),
+						elecciones.getFechaInicio(), elecciones.getFechaFin(),
+						elecciones.getOpciones());
+				eleccionesRepository.save(eleccion);
+				model.addAttribute("mensaje",
+						"Se han convocado las nuevas elecciones con nombre: "
+								+ elecciones.getNombre());
+				LOG.info("Se han convocado las nuevas elecciones con nombre: "
+						+ elecciones.getNombre());
+				return "/modificar_elecciones";
+			}
+			return "/modificar_elecciones";
+		}
 	}
-	
 
 	@RequestMapping(value = "/add_colegio")
 	public String partido(ColegioElectoral colegioElectoral, Model model) {
@@ -129,8 +173,7 @@ public class Main {
 
 		if (colegioElectoral.getCircunscripcion() == null
 				|| colegioElectoral.getComunidadAutonoma() == null) {
-			model.addAttribute("mensaje",
-					"Por favor, rellene todos los campos");
+			model.addAttribute("mensaje", "Por favor, rellene todos los campos");
 			LOG.info("No se ha añadido ningún colegio electoral");
 			return "/add_colegio";
 		} else {
