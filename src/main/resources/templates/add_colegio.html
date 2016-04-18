@@ -9,23 +9,28 @@
 	<div align="center">
 
 		<form id="colegio-form" action="#" th:action="@{/add_colegio}"
-			method="post" th:object="${colegioElectoral}" >
+			method="post" th:object="${colegioElectoral}">
 
-			<label class="etiqueta_cod_colegio" for="cod_colegio">Código del colegio: </label>
-			<input class="cod_colegio" type="text" th:field="*{codigoColegio}"/> 
+			<label class="etiqueta_cod_colegio" for="cod_colegio">Código
+				del colegio: </label> 
+			<input class="cod_colegio" type="text" th:field="*{codigoColegio}" /> 
 			<br></br> 
-			<input class="circunscripcion_colegio"
-				placeholder="Circunscripción" type="text"
-				th:field="*{circunscripcion}" /> 
+			<input class="circunscripcion_colegio" placeholder="Circunscripción"
+			type="text" th:field="*{circunscripcion}" /> 
 			<br></br> 
-			
 			<input class="ca_colegio" placeholder="Comunidad Autónoma" type="text"
 			th:field="*{comunidadAutonoma}" />
-			<br></br> <br></br> <br></br> <br></br>
-			
+			 <br></br> <br></br> <br></br> <br></br>
+
 			<button type="submit" class="boton_colegio">AÑADIR</button>
 		</form>
 	</div>
+	
+	<div  th:if="${mensaje != null}" class="mensaje" align="center">
+		 <p class="mostrar_mensaje" th:text="${mensaje}"></p>
+	</div>
 
+	<input type="button" class="icono_return" onclick="history.back()"
+		name="volver_atras" value="&#8617;" />
 </body>
 </html>

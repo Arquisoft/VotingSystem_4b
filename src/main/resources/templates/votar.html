@@ -11,12 +11,8 @@
 			th:object="${voto}">
 
 
-			<br></br>
-			<br></br>
-			<br></br>
-
-			<label class="lista_partidos" for="lista_partidos">Lista de
-				partidos políticos: </label>
+			<br></br> <br></br> <br></br> <label class="lista_partidos"
+				for="lista_partidos">Lista de partidos políticos: </label>
 
 
 			<div class="tabla_partidos">
@@ -34,6 +30,12 @@
 			<button type="submit" class="boton_votar">VOTAR</button>
 		</form>
 	</div>
+	
+	<div  th:if="${mensaje != null}" class="mensaje" align="center">
+		 <p class="mostrar_mensaje" th:text="${mensaje}"></p>
+	</div>
 
+	<input type="button" class="icono_return" onclick="history.back()"
+		name="volver_atras" value="&#8617;" />
 </body>
 </html>
