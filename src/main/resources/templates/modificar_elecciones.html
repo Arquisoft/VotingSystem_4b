@@ -13,9 +13,9 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: cabecera"></div>
-
+	
 	<div align="center">
-
+	<h2>Modificar elecciones</h2>
 		<form id="modificar-form" action="#"
 			th:action="@{/modificar_elecciones}" method="post"
 			th:object="${elecciones}">

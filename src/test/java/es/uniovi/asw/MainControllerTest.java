@@ -38,4 +38,26 @@ public class MainControllerTest {
     mvc.perform(get("/")).andExpect(status().isOk()).andExpect(content().string(containsString("Voting")));
   }
 
+  
+  @Test
+  public void testVotar() throws Exception {
+    mvc.perform(get("/votar")).andExpect(status().isOk()).andExpect(content().string(containsString("Votar")));
+  }
+  
+  @Test
+  public void testModificar() throws Exception {
+    mvc.perform(get("/modificar_elecciones")).andExpect(status().isOk()).andExpect(content().string(containsString("Modificar elecciones")));
+  }
+  
+  @Test
+  public void testColegio() throws Exception {
+    mvc.perform(get("/add_colegio")).andExpect(status().isOk()).andExpect(content().string(containsString("Añadir colegio electoral")));
+  }
+  
+  
+  
+  
+  
+  
+  
 }

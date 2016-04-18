@@ -163,13 +163,13 @@ public class Main {
 	}
 
 	@RequestMapping(value = "/add_colegio")
-	public String partido(ColegioElectoral colegioElectoral, Model model) {
+	public String colegio(ColegioElectoral colegioElectoral, Model model) {
 		LOG.info("Add school page access");
 		return "/add_colegio";
 	}
 
 	@RequestMapping(value = "/add_colegio", method = RequestMethod.POST)
-	public String addPartido(ColegioElectoral colegioElectoral, Model model) {
+	public String addColegio(ColegioElectoral colegioElectoral, Model model) {
 
 		if (colegioElectoral.getCircunscripcion() == null
 				|| colegioElectoral.getComunidadAutonoma() == null) {

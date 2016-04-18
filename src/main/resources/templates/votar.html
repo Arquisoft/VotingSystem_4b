@@ -5,8 +5,9 @@
 </head>
 <body>
 	<div th:replace="fragments/header :: cabecera"></div>
-
+	
 	<div align="center">
+		<h2>Votar</h2>
 		<form id="votar-form" action="#" th:action="@{/votar}" method="post"
 			th:object="${voto}">
 

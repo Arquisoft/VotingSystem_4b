@@ -8,6 +8,15 @@ h1 {
 	color: #eee;
 }
 
+h2{
+
+	margin-top: 1%;
+	font-size: 40px;
+	font-weight: 200;
+	color: #eee;
+	font-style:oblique;
+}
+
 a {
 	font-size: 17px;
 	font-weight: 500;
