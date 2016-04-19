@@ -76,8 +76,8 @@ public class BDTest {
 		cr.save(c2);
 		cr.save(c3);
 		
-		votor.save(new Voto(c1, PartidoPolitico.PP, false, false, false));
-		votor.save(new Voto(c1, PartidoPolitico.PSOE, false, false, false));
+		votor.save(new Voto(c1, PartidoPolitico.PP.toString(), false, false, false));
+		votor.save(new Voto(c1, PartidoPolitico.PSOE.toString(), false, false, false));
 		votor.save(new Voto(c2, null, false, false, true)); //voto en blanco
 		votor.save(new Voto(c3, null, false, true, false)); //voto nulo
 	}

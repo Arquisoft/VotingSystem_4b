@@ -3,14 +3,17 @@ package es.uniovi.asw.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import es.uniovi.asw.dbupdate.ColegioRepository;
 import es.uniovi.asw.dbupdate.EleccionesRepository;
 import es.uniovi.asw.dbupdate.VoterRepository;
@@ -44,7 +47,7 @@ public class Main {
 	}
 
 	@RequestMapping(value = "/votar")
-	public String votar(Voto voto, Model model) {
+	public String votar(Voto voto, @ModelAttribute("partidoPolitico") String partidoPolitico, Model model) {
 
 		List<PartidoPolitico> partidos = new ArrayList<PartidoPolitico>();
 		for (PartidoPolitico p : PartidoPolitico.values()) {
@@ -55,7 +58,7 @@ public class Main {
 	}
 
 	@RequestMapping(value = "/votar", method = RequestMethod.POST)
-	public String saveVote(Voto voto, Model model) {
+	public String saveVote(Voto voto,@ModelAttribute("partidoPolitico") String partidoPolitico, Model model) {
 
 		List<PartidoPolitico> partidos = new ArrayList<PartidoPolitico>();
 		for (PartidoPolitico p : PartidoPolitico.values()) {
@@ -63,7 +66,7 @@ public class Main {
 		}
 		model.addAttribute("partidos", partidos);
 
-		if (voto.getPartidoPolitico() == null) {
+		if (partidoPolitico == null) {
 			Voto v = new Voto(null, null, false, false, true);
 			votoRepository.save(v);
 			model.addAttribute("mensaje",
@@ -73,19 +76,21 @@ public class Main {
 			// voter.getNif());
 			return "/votar";
 		}
+		boolean encontrado=false;
 
 		for (PartidoPolitico p : PartidoPolitico.values()) {
-			if (p.toString().equals(voto.getPartidoPolitico().toString())) {
-				Voto v = new Voto(null, p, false, false, false);
+			if (p.toString().equals(partidoPolitico)) {
+				Voto v = new Voto(null, p.toString(), false, false, false);
 				votoRepository.save(v);
 				model.addAttribute("mensaje", "Ha votado correctamente");
 				LOG.info("Se ha añadido un nuevo voto");
 				// voterRepository.setEjercioDerechoAlVotoFor(true,
 				// voter.getNif());
+				encontrado=true;
 				return "/votar";
 			}
 		}
-		if (voto.getPartidoPolitico().equals("")) {
+		if (partidoPolitico.equals("")) {
 			Voto v = new Voto(null, null, false, false, true);
 			votoRepository.save(v);
 			model.addAttribute("mensaje",
@@ -95,15 +100,19 @@ public class Main {
 			// voter.getNif());
 			return "/votar";
 
-		} else {
-			Voto v = new Voto(null, null, false, true, false);
-			votoRepository.save(v);
-			model.addAttribute("mensaje", "Ha votado correctamente: voto nulo");
-			LOG.info("Se ha añadido un nuevo voto nulo");
-			// voterRepository.setEjercioDerechoAlVotoFor(true,
-			// voter.getNif());
+		}else{
+			if(encontrado==false){
+				Voto v = new Voto(null, null, false, true, false);
+				votoRepository.save(v);
+				model.addAttribute("mensaje", "Ha votado correctamente: voto nulo");
+				LOG.info("Se ha añadido un nuevo voto nulo");
+				// voterRepository.setEjercioDerechoAlVotoFor(true,
+				// voter.getNif());
+				return "/votar";
+			}
 			return "/votar";
 		}
+
 
 	}
 

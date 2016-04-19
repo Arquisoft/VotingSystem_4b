@@ -50,7 +50,7 @@ public class AddVoto {
 		boolean encontrado = false;
 		for (PartidoPolitico p : PartidoPolitico.values()) {
 			if(arg1.toString().equals(p.toString())){
-				voto1=new Voto(c1, p, false, false, false);
+				voto1=new Voto(c1, p.toString(), false, false, false);
 				vr.save(voto1);
 				encontrado=true;
 			}
