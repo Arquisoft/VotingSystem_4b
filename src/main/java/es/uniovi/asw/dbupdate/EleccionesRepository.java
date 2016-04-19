@@ -11,6 +11,6 @@ import es.uniovi.asw.modelo.Elecciones;
 
 public interface EleccionesRepository extends CrudRepository<Elecciones, Long>  {
 
-	
+	Elecciones findByNombre(String nombre);
 	List<Elecciones> findAll();
 }

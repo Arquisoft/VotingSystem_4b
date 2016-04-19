@@ -10,6 +10,7 @@ import es.uniovi.asw.modelo.Voter;
 
 public interface VoterRepository extends CrudRepository<Voter, Long> {
 
+	Voter findByNif(String nif);
 	Voter findByUsuario(String usuario);
 	List<Voter> findAll();
 	
